@@ -1,0 +1,168 @@
+/////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+using namespace std;
+
+void random(int cantidadNumeros, int numeros[]){
+  srand(static_cast<unsigned>(std::time(0)));
+    
+  for (int i = 0; i < cantidadNumeros; i++) {
+      numeros[i] = std::rand() % 3 + 1; // Genera un número aleatorio entre 10 y 99 (dos dígitos)
+  }
+
+  int numeroMasGrande = *max_element(numeros, numeros + cantidadNumeros);
+  int numeroMasPequeno = *min_element(numeros, numeros + cantidadNumeros);
+  
+  cout << "Los numeros generados son: ";
+  for (int i = 0; i < cantidadNumeros; i++) {
+    std::cout << numeros[i] << " ";
+  }
+}
+
+void seleccion(int arreglo[], int n) {
+	for (int i = 0; i < n - 1; i++) {
+		int min_idx = i;
+		for (int a = i + 1; a < n; a++) {
+				if (arreglo[a] < arreglo[min_idx]) {
+					min_idx = a;
+				}
+		}
+
+		int temporal = arreglo[min_idx];
+		arreglo[min_idx] = arreglo[i];
+		arreglo[i] = temporal;
+	}
+}
+
+int main() {
+  cout << "********************** Ejercicio 1, LABORATORIO **********************" << endl;
+  const int cantidad = 100;
+  int numeros[cantidad];
+  
+  random(100, numeros);
+  
+  int n = sizeof(numeros)/sizeof(numeros[0]);
+  seleccion(numeros, n);
+  cout << endl << endl;
+  
+  int num[3];
+  int s = 0;
+  for (int i = 0; i < 100; i++)
+  {
+  	num[s] = 0;
+    for (int j = 0; j < 100; j++)
+    {
+      if (numeros[i] == numeros[i - 1])
+      {
+        break;
+      }
+      if (numeros[i] == numeros[j])
+      {
+        num[s]++;
+      }
+    }
+    if (num[s] > 0)
+    {
+      cout << "numero " << numeros[i] << " se repite: " << num[s] << endl;
+      s++;
+    }
+  }
+  cout << endl;
+  if(num[0] > num[1] && num[0] > num[2]){
+  	cout << "Programación I" << endl;
+  }
+  if(num[1] > num[0] && num[1] > num[2]){
+  	cout << "Programación II" << endl;
+  }
+  if(num[2] > num[0] && num[2] > num[1]){
+  	cout << "Se acabaron las programaciones simples" << endl;
+  }
+  return 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+using namespace std;
+
+void seleccion(int arreglo[5], int n)
+{
+  for (int i = 0; i < n - 1; i++)
+  {
+    int min_idx = i;
+    for (int a = i + 1; a < n; a++)
+    {
+      if (arreglo[a] < arreglo[min_idx])
+      {
+        min_idx = a;
+      }
+    }
+
+    int temporal = arreglo[min_idx];
+    arreglo[min_idx] = arreglo[i];
+    arreglo[i] = temporal;
+  }
+}
+
+int main()
+{
+  cout << "********************** Ejercicio 2, LABORATORIO **********************" << endl;
+  const int cantidad = 5;
+  int numeros[5][3];
+
+  for (int x = 0; x < cantidad; x++)
+  {
+    for (int y = 0; y < 3; y++)
+    {
+      cout << "ingrese el numero NO " << x << ", de la columna " << y << " --> ";
+      cin >> numeros[x][y];
+    }
+  }
+  cout << "Areglo queda asi: " << endl;
+  for (int x = 0; x < cantidad; x++)
+  {
+    for (int y = 0; y < 3; y++)
+    {
+      cout << numeros[x][y] << "  ";
+    }
+    cout << endl;
+  }
+  int num[5];
+  int q = 0;
+  for (int x = 0; x < 5; x++)
+  {
+    num[x] = 1;
+    for (int y = 0; y < 3; y++)
+    {
+      num[x] = num[x] * numeros[x][y];
+    }
+    cout << endl;
+  }
+  int n = sizeof(num) / sizeof(num[0]);
+  seleccion(num, n);
+  cout << "Resultados de multiplicacion ordenados: " << endl;
+  for (int i = 0; i < 5; i++)
+  {
+    cout << num[i] << endl;
+  }
+
+  return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+Estructuras en c++:
+	Tal y como los vectores, las structs son cnojuntos de datos que se guardan juntos a los que se le llama por medio de el nombre general.
+Las estructuras pueden ser inicializadas mediante listas de inicialización como con los arreglos.
+Una operación válida entre estructuras es asignar variables de estructura a variables de estructura del mismo tipo. Las estructuras no pueden compararse
+entre si.
+
+////////////////////////////////////////////////////////////////////////////////////////////
+Diferencia entres structuras en c++ y java:
+	A simple vista se denota que es más corta la sintaxix al declarar una clase y se define parecido a una funcion solo que con la palabra reservada class.
+En java lo que se hace es un una variable asignar como una lista donde, unsando new se crea todas las caracteriticas del objeto.
+1. Uso de memoria, uso de punteros para asignar especificamente que espacio se usa
+	C++: Permite el uso directo de punteros, lo que brinda más control sobre la memoria.
+	Java: No permite el uso directo de punteros, lo que hace que la manipulación de memoria sea más segura y más confiable.
+2. Herencia, conpartir datos de una clase a otra, que son, conjuntos de caracterisiticas para ser manipuladas
+	C++: Permite la herencia múltiple, lo que significa que una clase puede heredar de varias clases base.
+	Java: No permite la herencia múltiple de clases, pero se puede lograr utilizando interfaces, lo que permite la implementación de múltiples interfaces.

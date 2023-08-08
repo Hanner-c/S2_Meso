@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+using namespace std;
+int main() {
+    const int cantidadNumeros = 15;
+    int numeros[cantidadNumeros];
+
+    srand(static_cast<unsigned>(std::time(0)));
+
+    
+    for (int i = 0; i < cantidadNumeros; i++) {
+        numeros[i] = std::rand() % 90 + 10; // Genera un número aleatorio entre 10 y 99 (dos dígitos)
+    }
+
+    // Encontrar el número más grande y el más pequeño
+    int numeroMasGrande = *max_element(numeros, numeros + cantidadNumeros);
+    int numeroMasPequeno = *min_element(numeros, numeros + cantidadNumeros);
+
+   cout << "Los numeros generados son: ";
+    for (int i = 0; i < cantidadNumeros; i++) {
+        std::cout << numeros[i] << " ";
+    }
+    cout <<endl;
+   cout << "El numero mas grande es: " << numeroMasGrande << endl;
+   cout << "El numero mas pequeno es: " << numeroMasPequeno << endl;
+
+    return 0;
+}

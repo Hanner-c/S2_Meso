@@ -1,0 +1,48 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.menuanime;
+import java.util.Scanner;
+
+/**
+ *
+ * @author josea
+ */
+public class Menuanime {
+    
+    public static class Persona {
+        String nombre;
+        int edad;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        
+        Scanner capt = new Scanner(System.in);
+        System.out.print("Ingrese un numero: ");
+        int a = capt.nextInt();
+        System.out.print("Numero ingresado = " + a + "\n");
+        
+        while (a != 0) {
+            System.out.print("Numero ingresado no es cero\n");
+            a = a - 1;
+        }
+        
+        do {
+        System.out.print("Entramos a do while\n");
+        }while(a !=0);
+        
+        for (int i = 0; i < 10; i+=1){
+            System.out.print(i + "\n");
+        }
+        
+        Persona persona1 = new Persona();
+        
+        persona1.nombre = "Arturo";
+        persona1.edad = 25;
+        
+       System.out.print(persona1.nombre + "\n");
+       System.out.print(persona1.edad);
+    }
+}

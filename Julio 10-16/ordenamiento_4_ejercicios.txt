@@ -1,0 +1,334 @@
+#include <iostream>
+using namespace std;
+
+void burbuja(int arr[], int n) {
+	bool cambio;
+	int temporal;
+	for (int i = 0; i < n - 1; i++) {
+		cambio = false;
+		for (int j = 0; j < n - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				swap(arr[j], arr[j + 1]);
+				cambio = true;
+			}
+		}
+		if (!cambio) {
+			break;
+		}
+	}
+}
+
+void seleccion(int arreglo[], int n) {
+	for (int i = 0; i < n - 1; i++) {
+		int min_idx = i;
+		for (int a = i + 1; a < n; a++) {
+				if (arreglo[a] < arreglo[min_idx]) {
+					min_idx = a;
+				}
+		}
+
+		int temporal = arreglo[min_idx];
+		arreglo[min_idx] = arreglo[i];
+		arreglo[i] = temporal;
+	}
+}
+
+void insercion(int arr[], int n) {
+	for (int i = 1; i < n; i++) {
+	int key = arr[i];
+	int j = i - 1;
+
+	while(j >= 0 && arr[j] > key){
+		arr[j+1] = arr[j];
+		j--;
+	}
+	arr[j + 1] = key;
+	}
+}
+
+//////////////////////////////////////////////
+void burbuja2(int arr[], int n) {
+	bool cambio;
+	int temporal;
+	for (int i = 0; i < n - 1; i++) {
+		cambio = false;
+		for (int j = 0; j < n - i - 1; j++) {
+			if (arr[j] < arr[j + 1]) {
+				swap(arr[j], arr[j + 1]);
+				cambio = true;
+			}
+		}
+		if (!cambio) {
+			break;
+		}
+	}
+}
+
+void seleccion2(int arreglo[], int n) {
+	for (int i = 0; i < n - 1; i++) {
+		int min_idx = i;
+		for (int a = i + 1; a < n; a++) {
+				if (arreglo[a] > arreglo[min_idx]) {
+					min_idx = a;
+				}
+		}
+
+		int temporal = arreglo[min_idx];
+		arreglo[min_idx] = arreglo[i];
+		arreglo[i] = temporal;
+	}
+}
+
+void insercion2(int arr[], int n) {
+	for (int i = 1; i < n; i++) {
+	int key = arr[i];
+	int j = i - 1;
+
+	while(j >= 0 && arr[j] < key){
+		arr[j+1] = arr[j];
+		j--;
+	}
+	arr[j + 1] = key;
+	}
+}
+
+int main(int argc, char *argv[]) {
+	int cantidad = 8;
+	int arr[8];
+	int arr2[8];
+	int arr3[8];
+	cout << "********************** Ejercicio 1 **********************" << endl;
+	cout << "Ingrese numeros aleatorios" << endl;
+	for(int i = 0; i < cantidad; i++){
+		cout << "Ingrese numero " << i + 1 << ": ";
+		cin >> arr[i];
+		arr2[i] = arr[i];
+		arr3[i] = arr[i];
+	}
+	int n = sizeof(arr)/sizeof(arr[0]);
+	burbuja(arr, n);
+	seleccion(arr2, n);
+	insercion(arr3 ,n);
+	cout << "*********************************************************" << endl << endl;
+	cout << "arreglo ordenado de manera ascendente " << endl;
+	cout << "Arr. Burbuja     " << "Arr. seleccion     " << "Arr. Ordenamiento     " << endl;
+	
+	for(int h = 0; h < cantidad; h++){
+		cout << "      " << arr[h] << "                 "  << arr2[h] << "                 " << arr3[h] << endl;
+	}
+	
+	burbuja2(arr, n);
+	seleccion2(arr2, n);
+	insercion2(arr3 ,n);
+	cout << "*********************************************************" << endl << endl;
+	cout << "arreglo ordenado de manera descendente " << endl;
+	cout << "Arr. Burbuja     " << "Arr. seleccion    " << "Arr. Ordenamiento     " << endl;
+	
+	for(int h = 0; h < cantidad; h++){
+		cout << "      " << arr[h] << "                 "  << arr2[h] << "                 " << arr3[h] << endl;
+	}
+	return 0;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// Siguiente ejercicio
+
+
+#include <iostream>
+using namespace std;
+
+void burbuja(int arr[], int n) {
+	bool cambio;
+	int temporal;
+	for (int i = 0; i < n - 1; i++) {
+		cambio = false;
+		for (int j = 0; j < n - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				swap(arr[j], arr[j + 1]);
+				cambio = true;
+			}
+		}
+		if (!cambio) {
+			break;
+		}
+	}
+}
+
+void seleccion(int arreglo[], int n) {
+	for (int i = 0; i < n - 1; i++) {
+		int min_idx = i;
+		for (int a = i + 1; a < n; a++) {
+				if (arreglo[a] < arreglo[min_idx]) {
+					min_idx = a;
+				}
+		}
+
+		int temporal = arreglo[min_idx];
+		arreglo[min_idx] = arreglo[i];
+		arreglo[i] = temporal;
+	}
+}
+
+void insercion(int arr[], int n) {
+	for (int i = 1; i < n; i++) {
+	int key = arr[i];
+	int j = i - 1;
+
+	while(j >= 0 && arr[j] > key){
+		arr[j+1] = arr[j];
+		j--;
+	}
+	arr[j + 1] = key;
+	}
+}
+
+int main(int argc, char *argv[]) {
+	int cantidad = 5;
+	char arr[5];
+	int arr1[5];
+	int arr2[5];
+	int arr3[5];
+	cout << "********************** Ejercicio 2 **********************" << endl;
+	cout << "Ingrese numeros aleatorios" << endl;
+	for(int i = 0; i < cantidad; i++){
+		cout << "Iunagre la letra Mayuscula " << i + 1 << ": ";
+		cin >> arr[i];
+		arr1[i] = int(arr[i]);
+		arr2[i] = int(arr[i]);
+		arr3[i] = int(arr[i]);
+	}
+	int n = sizeof(arr)/sizeof(arr[0]);
+	burbuja(arr1, n);
+	seleccion(arr2, n);
+	insercion(arr3 ,n);
+	cout << "*********************************************************" << endl << endl;
+	cout << "arreglo ordenado de manera algabetica " << endl;
+	cout << "Arr. Burbuja     " << "Arr. seleccion     " << "Arr. Ordenamiento     " << endl;
+	
+	for(int h = 0; h < cantidad; h++){
+		cout << "      " << char(arr1[h]) << "                 "  << char(arr2[h]) << "                 " << char(arr3[h]) << endl;
+	}
+	
+	return 0;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// Siguiente ejercicio
+
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+using namespace std;
+
+void random(int cantidadNumeros, int numeros[]){
+  srand(static_cast<unsigned>(std::time(0)));
+    
+  for (int i = 0; i < cantidadNumeros; i++) {
+      numeros[i] = std::rand() % 90 + 0; // Genera un número aleatorio entre 10 y 99 (dos dígitos)
+  }
+
+  int numeroMasGrande = *max_element(numeros, numeros + cantidadNumeros);
+  int numeroMasPequeno = *min_element(numeros, numeros + cantidadNumeros);
+
+  cout << "Los numeros generados son: ";
+  for (int i = 0; i < cantidadNumeros; i++) {
+    std::cout << numeros[i] << " ";
+  }
+}
+
+void seleccion(int arreglo[], int n) {
+	for (int i = 0; i < n - 1; i++) {
+		int min_idx = i;
+		for (int a = i + 1; a < n; a++) {
+				if (arreglo[a] < arreglo[min_idx]) {
+					min_idx = a;
+				}
+		}
+
+		int temporal = arreglo[min_idx];
+		arreglo[min_idx] = arreglo[i];
+		arreglo[i] = temporal;
+	}
+}
+
+int main() {
+  cout << "********************** Ejercicio 3, numeros aleatorios y oden **********************" << endl;
+  int numeros[15];
+  
+  random(15, numeros);
+  
+  int n = sizeof(numeros)/sizeof(numeros[0]);
+  seleccion(numeros, n);
+  cout << endl << endl;
+  cout << "Los numeros ya ordenados en lista: ";
+  for (int i = 0; i < 15; i++) {
+    std::cout << numeros[i] << " ";
+  }
+  cout <<endl;
+  cout << "El numero mas grande es: " << numeros[14] << endl;
+  cout << "El numero mas pequeno es: " << numeros[0] << endl;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// Siguiente ejercicio
+
+
+#include <iostream>
+using namespace std;
+
+void seleccion(int arreglo[][2], int n)
+{
+  for (int i = 0; i < n - 1; i++)
+  {
+    int min_idx = i;
+    for (int a = i + 1; a < n; a++)
+    {
+      if (arreglo[a][0] < arreglo[min_idx][0])
+      {
+        min_idx = a;
+      }
+    }
+
+    int temporal = arreglo[min_idx][0];
+    int temporal2 = arreglo[min_idx][1];
+    arreglo[min_idx][0] = arreglo[i][0];
+    arreglo[min_idx][1] = arreglo[i][1];
+    arreglo[i][0] = temporal;
+    arreglo[i][1] = temporal2;
+  }
+}
+
+int main()
+{
+  // Arreglo bidimensional de enteros
+  int arr[10][2];
+  cout << "*** Reto 4, ordenamiento bidimencional ***" << endl;
+  cout << "Ingrese numeros" << endl;
+
+  for (int i = 0; i < 10; i++)
+  {
+    cout << "Ingrese a la fila uno, un numero: ";
+    cin >> arr[i][0];
+    cout << "Ingrese a la fila dos, un numero: ";
+    cin >> arr[i][1];
+    cout << endl;
+  }
+
+  int filas = sizeof(arr) / sizeof(arr[0]);
+
+  // Ordenar el arreglo bidimensional basado en la primera columna
+  seleccion(arr, filas);
+
+  // Mostrar el arreglo ordenado
+  for (int i = 0; i < 10; i++)
+  {
+    for (int j = 0; j < 2; j++)
+    {
+      cout << arr[i][j] << " ";
+    }
+    cout << endl;
+  }
+
+  return 0;
+}

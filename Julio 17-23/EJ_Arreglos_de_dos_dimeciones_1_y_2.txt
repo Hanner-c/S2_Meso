@@ -1,0 +1,150 @@
+//           -- Ejercicio 1
+#include <iostream>
+using namespace std;
+
+// si cambio el tama;o del arreglo cambiar tambien linea 5 las mismas dimenciones y la linea 16
+void ordenarArregloBidimensional(int arreglo[][2], int filas) {
+	for (int i = 0; i < filas - 1; i++) {
+		int minimoIndice = i;
+		
+		for (int j = i + 1; j < filas; j++) {
+			if (arreglo[j][0] > arreglo[minimoIndice][0]) {
+				minimoIndice = j;
+			}
+		}
+		
+		if (minimoIndice != i) {
+			for (int k = 0; k < 2; k++) {
+				int temp = arreglo[i][k];
+				arreglo[i][k] = arreglo[minimoIndice][k];
+				arreglo[minimoIndice][k] = temp;
+			}
+		}
+	}
+}
+
+int main() {
+	// Arreglo bidimensional de enteros
+	int arregloBidimensional[6][2];
+	cout << "*** Reto 1, ordenamiento bidimencional ***" << endl;
+	cout << "Ingrese numeros" << endl;
+	
+	for(int i = 0; i < 6; i++){
+		cout << "Ingrese a la fila uno, un numero: ";
+		cin >> arregloBidimensional[i][0];
+		cout << "Ingrese a la fila dos, un numero: ";
+		cin >> arregloBidimensional[i][1];
+		cout << endl;
+	}
+	
+	
+	int filas = sizeof(arregloBidimensional) / sizeof(arregloBidimensional[0]);
+	
+	// Ordenar el arreglo bidimensional basado en la primera columna
+	ordenarArregloBidimensional(arregloBidimensional, filas);
+	
+	// Mostrar el arreglo ordenado
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 2; j++) {
+			cout << arregloBidimensional[i][j] << " ";
+		}
+		cout << endl;
+	}
+	
+	return 0;
+}  
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//           -- Ejercicio 2
+#include <iostream>
+using namespace std;
+
+void seleccion(int arreglo[3], int n)
+{
+  for (int i = 0; i < n - 1; i++)
+  {
+    int min_idx = i;
+    for (int a = i + 1; a < n; a++)
+    {
+      if (arreglo[a] < arreglo[min_idx])
+      {
+        min_idx = a;
+      }
+    }
+
+    int temporal = arreglo[min_idx];
+    arreglo[min_idx] = arreglo[i];
+    arreglo[i] = temporal;
+  }
+}
+
+int main(int argc, char const *argv[])
+{
+  int n_factorial[3];
+  cout << "----- Ejercicio 2, Factoriales -----" << endl;
+  for (int i = 0; i < 3; i++)
+  {
+    cout << "Ingrese numero " << i + 1 << ": --> ";
+    cin >> n_factorial[i];
+  }
+  int n = sizeof(n_factorial) / sizeof(n_factorial[0]);
+  seleccion(n_factorial, n);
+
+  cout << "Numeros ordenados: " << n_factorial[0] << ", " << n_factorial[1] << ", " << n_factorial[2] << endl;
+
+  int multiplicacion = 1;
+
+  cout << n_factorial[0] << "! = ";
+  for (int i = n_factorial[0]; i > 0; i--)
+  {
+    multiplicacion = multiplicacion * i;
+    if (i > 1)
+    {
+      cout << i << " * ";
+    }
+
+    else
+    {
+      cout << i << " = ";
+    }
+  }
+  cout << multiplicacion << endl;
+
+  multiplicacion = 1;
+
+  cout << n_factorial[1] << "! = ";
+  for (int i = n_factorial[1]; i > 0; i--)
+  {
+    multiplicacion = multiplicacion * i;
+    if (i > 1)
+    {
+      cout << i << " * ";
+    }
+
+    else
+    {
+      cout << i << " = ";
+    }
+  }
+  cout << multiplicacion << endl;
+
+  multiplicacion = 1;
+
+  cout << n_factorial[2] << "! = ";
+  for (int i = n_factorial[2]; i > 0; i--)
+  {
+    multiplicacion = multiplicacion * i;
+    if (i > 1)
+    {
+      cout << i << " * ";
+    }
+
+    else
+    {
+      cout << i << " = ";
+    }
+  }
+  cout << multiplicacion << endl;
+  return 0;
+}
